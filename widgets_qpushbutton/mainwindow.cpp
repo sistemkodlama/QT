@@ -22,9 +22,21 @@ MainWindow::MainWindow(QWidget *parent)
     btn_green->setStyleSheet("background-color: green; color: white");  // Butonun renklerini belirtiriz
     ui->centralwidget->layout()->addWidget(btn_green);
 
+    btn_click = new QPushButton("Click");
+    ui->centralwidget->layout()->addWidget(btn_click);
+
     connect(btn_ok, &QPushButton::clicked, this, &MainWindow::on_btnOKClicked);           // buton tıklandığında
     connect(btn_cancel, &QPushButton::pressed, this, &MainWindow::on_btnCancelPressed);   // buton üstüne basıldığı anda
     connect(btn_green, &QPushButton::released, this, &MainWindow::on_btnGreenReleased);    // buton üstüne basılmayı kaldırdığımız anda
+    connect(btn_click, &QPushButton::clicked,
+            btn_click, [&](){
+                            if(btn_click->text() == "Click") {
+                                btn_click->setText("Wait");
+                            }
+                            else if(btn_click->text() == "Wait") {
+                                btn_click->setText("Click");
+                        }
+    });
 }
 
 MainWindow::~MainWindow()

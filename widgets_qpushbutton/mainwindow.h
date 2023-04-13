@@ -20,6 +20,7 @@ public:
     QPushButton *btn_ok;
     QPushButton *btn_cancel;
     QPushButton *btn_green;
+    QPushButton *btn_click;
 
 public slots:
     void on_btnOKClicked();
